@@ -4,9 +4,7 @@ class Roof {
    float s;
    UpperGround up;
    Roof(float inX, int inY, float inS) {
-     x = inX;
-     y = inY;
-     s = inS;
+     x = inX; y = inY; s = inS;
      up = new UpperGround(inX, inY, inS);
    }
    void show() {
