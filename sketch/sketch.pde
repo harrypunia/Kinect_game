@@ -1,8 +1,9 @@
 Game game;
+int blockSize = 50; //size of each box
 
 void setup () {
-  size(500, 500);
-  game = new Game();
+  size(1200, 800);
+  game = new Game(blockSize);
 }
 
 void draw() {

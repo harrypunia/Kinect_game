@@ -1,9 +1,7 @@
-UnderGround ug;
-
 class Floor {
-   float x;
+   float x, s;
    int y;
-   float s;
+   UnderGround ug;
    Floor(float inX, int inY, float inS) {
       x = inX;
       y = inY;
