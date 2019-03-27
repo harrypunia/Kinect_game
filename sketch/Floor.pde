@@ -9,16 +9,16 @@ class Floor {
    }
    
    void show() {
-     fill(0);
-     noStroke();
-     rect(this.x, this.y, this.size + 1, this.size + 1);
-     ug.show(this.x);
      updatePan();
+     if(x > -size || this.x < width + size) { 
+       fill(0);
+       noStroke();
+       rect(this.x, this.y, this.size + 1, this.size + 1);
+       ug.show(this.x);
+     }
    }
    
-   void updatePan() {
-     this.x -= playerSpeed;
-   }
+   void updatePan() {this.x -= playerSpeed;}
    
 }
 

@@ -9,15 +9,15 @@ class Roof {
    }
    
    void show() {
-     fill(0);
-     rect(this.x, this.y, this.size + 1, this.size + 1);
-     up.show(this.x);
      updatePan();
+     if(this.x > -size || this.x < width + size){
+       fill(0);
+       rect(this.x, this.y, this.size + 1, this.size + 1);
+       up.show(this.x);
+     }
    }
    
-   void updatePan() {
-     this.x -= playerSpeed;
-   }
+   void updatePan() {this.x -= playerSpeed;}
    
 }
 
