@@ -20,13 +20,13 @@ class Game {
 
 void keyPressed() {
   //39 = rightArrow, 37 = leftArrow; 38 == upArrow;
-  if(keyCode == 39) {env.moveRight = true;} else {env.moveRight = false;}
-  if(keyCode == 37) {env.moveLeft = true;} else {env.moveLeft = false;}
-  if(keyCode == 38) {player.startJump = true;} else {player.startJump = false;}
+  if(keyCode == 39) env.moveRight = true;
+  if(keyCode == 37) env.moveLeft = true;
+  if(keyCode == 38) player.startJump = true;
 }
 
 void keyReleased() {
-  env.moveLeft = false;
-  env.moveRight = false;
-  player.startJump = false;
+  if(keyCode == 39) env.moveRight = false;
+  if(keyCode == 37) env.moveLeft = false;
+  if(keyCode == 38) player.startJump = false;
 }

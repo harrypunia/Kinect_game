@@ -23,7 +23,7 @@ class Physics {
    void setActiveBlock() {
      if(floors[leftBlock].y < floors[activeBlock].y) {
        if(floors[leftBlock].x + blockSize > player.pos.x - playerSize/2) {
-         if(player.pos.y < floors[rightBlock].y) {
+         if(player.pos.y < floors[leftBlock].y) {
            activeBlock = leftBlock;
          } else {
            wallCollision();
