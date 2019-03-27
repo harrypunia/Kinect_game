@@ -1,8 +1,8 @@
 class Physics {
    int activeBlock, leftBlock, rightBlock;
-   float size;
-   Physics(int playerStart, float inSize) {
-     size = inSize;
+   float blockSize;
+   Physics(int playerStart, float inBlockSize) {
+     blockSize = inBlockSize;
      activeBlock = playerStart;
    }
    void init() {
@@ -15,15 +15,19 @@ class Physics {
      rightBlock = activeBlock + 1; 
    }
    void setActiveBlock() {
-      if(floors[leftBlock].x + size > player.pos.x) {
+      if(floors[leftBlock].x + blockSize > player.pos.x) {
         activeBlock = leftBlock;
       } else if(floors[rightBlock].x < player.pos.x) {
         activeBlock = rightBlock;
       }
    }
    void groundCollision() {
-      if(player.pos.y >= floors[activeBlock].y) {
-       //player.pos.y = floors[activeBlock].y - playerSize/2; 
+      if(player.pos.y > floors[activeBlock].y - playerSize) {
+         player.pos.y = floors[activeBlock].y - playerSize;
+         player.vel.y = 0;
+         player.jumping = false;
+      } else if (player.pos.y < floors[activeBlock].y - playerSize) {
+          
       }
    }
 }

@@ -1,14 +1,14 @@
 class Roof {
-   float x, initX, s;
+   float x, initX, size;
    float y;
    UpperGround up;
-   Roof(float inX, int inY, float inS) {
-     x = inX; initX = inX; y = inY; s = inS;
-     up = new UpperGround(inX, inY, inS);
+   Roof(float inX, int inY, float inBlockSize) {
+     x = inX; initX = inX; y = inY; size = inBlockSize;
+     up = new UpperGround(inX, inY, inBlockSize);
    }
    void show() {
      fill(200, 10, 10);
-     rect(this.x, this.y, this.s + 1, this.s + 1);
+     rect(this.x, this.y, this.size + 1, this.size + 1);
      up.show(this.x);
      updatePan();
    }
@@ -18,20 +18,20 @@ class Roof {
 }
 
 class UnderGround {
-   float x, s;
+   float x, size;
    float y;
    float [] arr;
-   UnderGround(float inX, int inY, float inS) {
-     x = inX; y = inY; s = inS;
-     arr = new float[int((height - inY) / inS) + 1];
+   UnderGround(float inX, int inY, float inBlockSize) {
+     x = inX; y = inY; size = inBlockSize;
+     arr = new float[int((height - inY) / inBlockSize) + 1];
      for(int i = 0; i < arr.length; i++) {
-       arr[i] = inY + ((i + 1) * inS);
+       arr[i] = inY + ((i + 1) * inBlockSize);
      }
    }
    void show(float newX) {
     fill(50);
     for(int i = 0; i < arr.length; i++){ 
-       rect(newX, arr[i], s + 1, s + 1);
+       rect(newX, arr[i], size + 1, size + 1);
      } 
    }
 }
