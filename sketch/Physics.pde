@@ -22,16 +22,30 @@ class Physics {
    
    void setActiveBlock() {
      if(floors[leftBlock].y < floors[activeBlock].y) {
-       if(floors[leftBlock].x + blockSize > player.pos.x - playerSize/2) activeBlock = leftBlock;
+       if(floors[leftBlock].x + blockSize > player.pos.x - playerSize/2) {
+         if(player.pos.y < floors[rightBlock].y) {
+           activeBlock = leftBlock;
+         } else {
+           wallCollision();
+         }
+       }
      } else {
        if(floors[leftBlock].x + blockSize > player.pos.x + playerSize/2) activeBlock = leftBlock;
      }
      if(floors[rightBlock].y < floors[activeBlock].y) {
-       if(floors[rightBlock].x < player.pos.x + playerSize/2) activeBlock = rightBlock;
+       if(floors[rightBlock].x < player.pos.x + playerSize/2) {
+         if(player.pos.y < floors[rightBlock].y) {
+           activeBlock = rightBlock;
+         } else { 
+           wallCollision();
+         }
+       }
      } else {
        if(floors[rightBlock].x < player.pos.x - playerSize/2) activeBlock = rightBlock;
      }
    }
+   
+   void wallCollision() {playerSpeed *= -1;}
    
    void groundCollision() {
       if(player.pos.y > floors[activeBlock].y - playerSize/2) {

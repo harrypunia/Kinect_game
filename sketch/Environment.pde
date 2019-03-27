@@ -3,15 +3,20 @@ Roof [] roofs = new Roof[40];
 
 class Environment {
   
- float localSize;
+ float localSize, groundSmoothness = .6;
+ int groundIndex = 0;
+ float [] groundPositions = {600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700};
  boolean moveLeft, moveRight;
  
  Environment(float size) {
    localSize = size;
    for(int i = 0; i < floors.length; i++) {
+      if(random(1) > groundSmoothness) {
+       groundIndex = int(random(groundPositions.length)); 
+      }
       roofs[i] = new Roof(i * size, int(random(size, height/4)), size);
-      floors[i] = new Floor(i * size, int(random(height/1.5, height - size)), size);
-     }
+      floors[i] = new Floor(i * size, groundPositions[groundIndex], size);
+   }
  }
  
  void show() {
