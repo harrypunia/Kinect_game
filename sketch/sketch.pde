@@ -12,13 +12,24 @@ float spikeSize = 20;
 float doorSpeed = 2;
 float doorWidth = 20;
 
+JSONObject json;
+JSONObject groundPositions;
+JSONObject roofPositions;
+
 void setup () {
   size(1400, 900);
   smooth(4);
+  loadData();
   game = new Game(blockSize, playerStart, playerSize);
 }
 
 void draw() {
   background(255);
   game.show();
+}
+
+void loadData() {
+  json = loadJSONObject("data/data.json");
+  groundPositions = json.getJSONObject("groundPositions");
+  roofPositions = json.getJSONObject("roofPositions");
 }

@@ -1,7 +1,7 @@
 class Obstacles {
   
-  int [] spikePositions = {20, 21, 22, 27, 28, 29, 36, 40, 41, 42, 55, 56, 59, 62, 64, 67, 72, 73, 80, 81, 85};
-  int [] doorPositions = {18, 30, 48};
+  int [] spikePositions = {9};
+  int [] doorPositions = {8};
   Spike [] spikes = new Spike[spikePositions.length];
   Door [] doors = new Door[doorPositions.length];
   
