@@ -21,31 +21,26 @@ class Physics {
    }
    
    void setActiveBlock() {
-     if(floors[leftBlock].y < floors[activeBlock].y) {
-       if(floors[leftBlock].x + blockSize > player.pos.x - playerSize/2) {
-         if(player.pos.y < floors[leftBlock].y) {
-           activeBlock = leftBlock;
-         } else {
-           wallCollision();
-         }
-       }
-     } else {
-       if(floors[leftBlock].x + blockSize > player.pos.x + playerSize/2) activeBlock = leftBlock;
-     }
-     if(floors[rightBlock].y < floors[activeBlock].y) {
+     float leftBlockEdge = floors[leftBlock].x + blockSize;
+     
+     if(blockIsHigher(leftBlock)) {
+       if(leftBlockEdge > player.pos.x - playerSize/2) {
+         if(playerIsHigher(leftBlock)) activeBlock = leftBlock; else wallCollision();
+        }
+     } else {if(leftBlockEdge > player.pos.x + playerSize/2) activeBlock = leftBlock;}
+      
+     if(blockIsHigher(rightBlock)) {
        if(floors[rightBlock].x < player.pos.x + playerSize/2) {
-         if(player.pos.y < floors[rightBlock].y) {
-           activeBlock = rightBlock;
-         } else { 
-           wallCollision();
-         }
+         if(playerIsHigher(rightBlock)) activeBlock = rightBlock; else wallCollision();
        }
-     } else {
-       if(floors[rightBlock].x < player.pos.x - playerSize/2) activeBlock = rightBlock;
-     }
+     } else {if(floors[rightBlock].x < player.pos.x - playerSize/2) activeBlock = rightBlock;}
    }
    
    void wallCollision() {playerSpeed *= -1;}
+   
+   boolean blockIsHigher(int index) {if(floors[index].y < floors[activeBlock].y) return true; else return false;}
+   
+   boolean playerIsHigher(int index) {if(player.pos.y < floors[index].y) return true; else return false;}
    
    void groundCollision() {
       if(player.pos.y > floors[activeBlock].y - playerSize/2) {

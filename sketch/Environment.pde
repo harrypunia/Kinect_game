@@ -1,5 +1,5 @@
-Floor [] floors = new Floor[40];
-Roof [] roofs = new Roof[40];
+Floor [] floors = new Floor[100];
+Roof [] roofs = new Roof[100];
 
 class Environment {
   

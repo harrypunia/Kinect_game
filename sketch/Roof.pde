@@ -9,7 +9,7 @@ class Roof {
    }
    
    void show() {
-     fill(200, 10, 10);
+     fill(0);
      rect(this.x, this.y, this.size + 1, this.size + 1);
      up.show(this.x);
      updatePan();
@@ -35,7 +35,7 @@ class UpperGround {
    }
    
    void show(float newX) {
-    fill(255, 50, 50);
+    fill(50);
     for(int i = 0; i < arr.length; i++){ 
        rect(newX, arr[i], s + 1, s + 1);
      } 
