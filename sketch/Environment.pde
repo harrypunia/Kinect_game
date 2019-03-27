@@ -1,5 +1,6 @@
 Floor [] floors = new Floor[100];
 Roof [] roofs = new Roof[100];
+Obstacles ob;
 
 class Environment {
   
@@ -17,10 +18,12 @@ class Environment {
       roofs[i] = new Roof(i * size, roofPositions[roofIndex], size);
       floors[i] = new Floor(i * size, groundPositions[groundIndex], size);
    }
+   ob = new Obstacles(blockSize, floors, roofs);
  }
  
  void show() {
-   for(int i = 0; i < floors.length; i++) {
+   ob.show();
+    for(int i = 0; i < floors.length; i++) {
       roofs[i].show();
       floors[i].show();
     }

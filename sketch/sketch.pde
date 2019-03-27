@@ -7,6 +7,10 @@ float playerMaxSpeed = 6;
 float playerAcceleration = 0.5;
 float playerJumpSpeed = 12;
 float gravity = 0.09;
+//Obsatacles
+float spikeSize = 20;
+float doorSpeed = 2;
+float doorWidth = 20;
 
 void setup () {
   size(1400, 900);
