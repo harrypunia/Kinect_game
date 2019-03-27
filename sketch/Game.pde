@@ -6,8 +6,8 @@ class Game {
   
    Game(int inBlockSize, int playerStart, float inPlayerSize) {
      env = new Environment(inBlockSize);
-     physics = new Physics(playerStart, inBlockSize);
-     player = new Player((playerStart * inBlockSize), int(floors[playerStart].y - inPlayerSize), inPlayerSize);
+     physics = new Physics(playerStart, inBlockSize, inPlayerSize);
+     player = new Player((playerStart * inBlockSize) + inBlockSize/2, floors[playerStart].y - inPlayerSize/2, inPlayerSize);
    }
    
    void show() {

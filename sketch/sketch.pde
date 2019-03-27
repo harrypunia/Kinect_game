@@ -5,7 +5,7 @@ float playerSize = 20; //size of the player
 float playerSpeed = 0; //speed at which player moves
 float playerMaxSpeed = 8;
 float playerAcceleration = 0.5;
-float playerJumpSpeed = 2;
+float playerJumpSpeed = 12;
 float gravity = 0.09;
 
 void setup () {

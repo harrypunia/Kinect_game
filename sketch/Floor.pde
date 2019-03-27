@@ -1,9 +1,9 @@
 class Floor {
-   float x, size, initX;
-   int y;
+  
+   float x, y, size, initX;
    UnderGround ug;
    
-   Floor(float inX, int inY, float inBlockSize) {
+   Floor(float inX, float inY, float inBlockSize) {
       x = inX; initX = inX; y = inY; size = inBlockSize;
       ug = new UnderGround(inX, inY, inBlockSize);
    }
@@ -15,26 +15,31 @@ class Floor {
      ug.show(this.x);
      updatePan();
    }
+   
    void updatePan() {
      this.x -= playerSpeed;
    }
+   
 }
 
-class UpperGround {
-   float x, s;
-   float y;
+class UnderGround {
+  
+   float x, y, size;
    float [] arr;
-   UpperGround(float inX, int inY, float inBlockSize) {
-     x = inX; y = inY; s = inBlockSize;
-     arr = new float[int(inY / inBlockSize) + 1];
+   
+   UnderGround(float inX, float inY, float inBlockSize) {
+     x = inX; y = inY; size = inBlockSize;
+     arr = new float[int((height - inY) / inBlockSize) + 1];
      for(int i = 0; i < arr.length; i++) {
-       arr[i] = inY - ((i + 1) * inBlockSize);
+       arr[i] = inY + ((i + 1) * inBlockSize);
      }
    }
+   
    void show(float newX) {
-    fill(255, 50, 50);
+    fill(50);
     for(int i = 0; i < arr.length; i++){ 
-       rect(newX, arr[i], s + 1, s + 1);
+       rect(newX, arr[i], size + 1, size + 1);
      } 
    }
+   
 }
