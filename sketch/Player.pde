@@ -2,7 +2,7 @@ class Player {
   
    PVector pos, vel, acc, gravity; 
    float size, jumpSpeed;
-   boolean startJump, jumping = false;
+   boolean startJump, jumping = false, die = false;
    
    Player(float x, float y, float inPlayerSize) {
      pos = new PVector(x, y);
@@ -13,10 +13,11 @@ class Player {
    }
    
    void show() {
+    death();
     update();
     jump();
-    fill(200, 10, 200);
     rectMode(CENTER);
+    fill(200, 10, 200);
     rect(pos.x, pos.y, size, size);
     rectMode(CORNER); //reset
    }
@@ -27,9 +28,7 @@ class Player {
      acc.mult(0);
    }
    
-   void applyForce(PVector force) {
-    acc.add(force);
-   }
+   void applyForce(PVector force) {acc.add(force);}
    
    void jump() {
      if(!jumping) {
@@ -40,8 +39,13 @@ class Player {
      } else vel.add(gravity);
    }
    
-   void fall() {
-     jumping = true;
+   void fall() {jumping = true;}
+   
+   void death() {
+     if(this.die) {
+       playerSpeed = 0;
+       startJump = true;
+     }
    }
    
 }

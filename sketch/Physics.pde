@@ -10,9 +10,11 @@ class Physics {
    }
    
    void init() {
-     updateBlocks();
-     setActiveBlock();
-     groundCollision();
+     if(!player.die) {
+       updateBlocks();
+       setActiveBlock();
+       groundCollision();
+     }
    }
    
    void updateBlocks() {
@@ -44,9 +46,11 @@ class Physics {
    
    void groundCollision() {
       if(player.pos.y > floors[activeBlock].y - playerSize/2) {
-         player.pos.y = floors[activeBlock].y - playerSize/2;
-         player.vel.y = 0;
-         player.jumping = false;
+        if(floors[activeBlock].y == height) player.die = true; else {
+           player.pos.y = floors[activeBlock].y - playerSize/2;
+           player.vel.y = 0;
+           player.jumping = false;
+        }
       } else if (player.pos.y < floors[activeBlock].y - playerSize/2) {
           player.fall();
       }

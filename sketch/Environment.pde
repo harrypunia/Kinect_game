@@ -18,13 +18,15 @@ class Environment {
  }
  
  void show() {
-   ob.show();
+    ob.show();
     for(int i = 0; i < floors.length; i++) {
       roofs[i].show();
       floors[i].show();
     }
-    pan();
-    checkCorners();
+    if(!player.die) {
+      pan();
+      checkCorners();
+    }
  }
  
  void checkCorners() {

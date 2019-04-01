@@ -10,7 +10,7 @@ class Obstacles {
       spikes[i] = new Spike(floors, spikePositions[i], spikeSize);
     }
     for(int i = 0; i < doors.length; i++) {
-     doors[i] = new Door(floors, roofs, doorSpeed, doorWidth); 
+     doors[i] = new Door(floors, roofs, doorSpeed, doorWidth, doorPositions[i]); 
     }
   }
   
@@ -19,7 +19,7 @@ class Obstacles {
        spikes[i].show();
      }
      for(int i = 0; i < doors.length; i++) {
-       doors[i].show(doorPositions[i]); 
+       doors[i].show(); 
      }
   }
   

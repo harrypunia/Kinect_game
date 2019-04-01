@@ -7,7 +7,7 @@ float playerMaxSpeed = 6;
 float playerAcceleration = 0.5;
 float playerJumpSpeed = 12;
 float gravity = 0.09;
-//Obsatacles
+//------OBSTALCES-------
 float spikeSize = 20;
 float doorSpeed = 2;
 float doorWidth = 20;
@@ -15,8 +15,11 @@ float doorWidth = 20;
 JSONObject json;
 JSONObject groundPositions;
 JSONObject roofPositions;
+JSONObject spikePositions;
+JSONObject doorPositions;
 
 void setup () {
+  noStroke();
   size(1400, 900);
   smooth(4);
   loadData();
@@ -31,5 +34,7 @@ void draw() {
 void loadData() {
   json = loadJSONObject("data/data.json");
   groundPositions = json.getJSONObject("groundPositions");
+  spikePositions = json.getJSONObject("spikePositions");
+  doorPositions = json.getJSONObject("doorPositions");
   roofPositions = json.getJSONObject("roofPositions");
 }
