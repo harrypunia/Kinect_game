@@ -13,7 +13,7 @@ class Floor {
      if(x > -size || this.x < width + size && this.y >= height) { 
        fill(0);
        noStroke();
-       rect(this.x, this.y, this.size + 1, this.size + 1);
+       image(assets.ground, this.x, this.y, this.size + 1, this.size + 1);
        ug.show(this.x);
      }
    }
@@ -38,7 +38,7 @@ class UnderGround {
    void show(float newX) {
     fill(50);
     for(int i = 0; i < arr.length; i++){ 
-       rect(newX, arr[i], size + 1, size + 1);
+       image(assets.underGround, newX, arr[i], size + 1, size + 1);
      } 
    }
    

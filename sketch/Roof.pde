@@ -37,7 +37,7 @@ class UpperGround {
    void show(float newX) {
     fill(50);
     for(int i = 0; i < arr.length; i++){ 
-       rect(newX, arr[i], s + 1, s + 1);
+       image(assets.underGround, newX, arr[i], s + 1, s + 1);
      } 
    }
    

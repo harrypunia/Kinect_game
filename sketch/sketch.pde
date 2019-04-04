@@ -1,7 +1,7 @@
 Game game;
 int blockSize = 50; //size of each box
 int playerStart = 5; //starting index of player
-float playerSize = 20; //size of the player (max = blockSize)
+float playerSize = 50; //size of the player (max = blockSize)
 float playerSpeed = 0; //speed at which player moves
 float playerMaxSpeed = 6;
 float playerAcceleration = 0.5;
@@ -27,7 +27,9 @@ void setup () {
 }
 
 void draw() {
-  background(255);
+  float relBackPosX = floors[0].x/(100 * blockSize) * assets.background.width;
+  float relBackPosY = -(assets.background.height - height)/2;
+  image(assets.background, relBackPosX, relBackPosY, assets.background.width, assets.background.height);
   game.show();
 }
 
