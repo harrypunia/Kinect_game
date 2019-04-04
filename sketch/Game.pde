@@ -17,6 +17,7 @@ class Game {
      player.show();
      env.show();
      physics.init();
+     detectPose();
    }
    
    void drawBackground() {
@@ -31,15 +32,18 @@ class Game {
    
 }
 
-//void keyPressed() {
-//  //39 = rightArrow, 37 = leftArrow; 38 == upArrow;
-//  if(keyCode == 39) env.moveRight = true;
-//  if(keyCode == 37) env.moveLeft = true;
-//  if(keyCode == 38) player.startJump = true;
-//}
-
-//void keyReleased() {
-//  if(keyCode == 39) env.moveRight = false;
-//  if(keyCode == 37) env.moveLeft = false;
-//  if(keyCode == 38) player.startJump = false;
-//}
+void detectPose() {
+  ArrayList<KSkeleton> skeletonArray =  kinect.getSkeletonColorMap();
+  for (int i = 0; i < skeletonArray.size(); i++) {
+    KSkeleton skeleton = (KSkeleton) skeletonArray.get(i);
+    if (skeleton.isTracked()) {
+      KJoint[] joints = skeleton.getJoints();
+      if(joints[KinectPV2.JointType_HandRight].getState() == 3 && joints[KinectPV2.JointType_HandLeft].getState() == 3) {
+        player.startJump = true;
+      } else {
+        if(joints[KinectPV2.JointType_HandRight].getState() == 3) env.moveRight = true; else env.moveRight = false;
+        if(joints[KinectPV2.JointType_HandLeft].getState() == 3) env.moveLeft = true; else env.moveLeft = false;
+      }
+    }
+  }
+}

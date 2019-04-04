@@ -19,10 +19,12 @@ JSONObject spikePositions;
 JSONObject doorPositions;
 
 import KinectPV2.*;
-kinect = new Kinect();
 KinectPV2 kinect;
 
-void setup ()' {
+void setup () {
+  kinect = new KinectPV2(this);
+  kinect.enableSkeletonColorMap(true);
+  kinect.enableColorImg(true);
   kinect.init();
   noStroke();
   size(1400, 900);
@@ -32,19 +34,7 @@ void setup ()' {
 }
 
 void draw() {
-  ArrayList<KSkeleton> skeletonArray =  kinect.getSkeletonColorMap();
   game.show();
-  
-  for (int i = 0; i < skeletonArray.size(); i++) {
-    KSkeleton skeleton = (KSkeleton) skeletonArray.get(i);
-    if (skeleton.isTracked()) {
-      KJoint[] joints = skeleton.getJoints();
-      if(joints[KinectPV2.JointType_HandRight].getState() == 3) {
-        env.moveRight = true;
-      } else env.moveRight = false;
-      if(joints[KinectPV2.JointType_HandLeft].getState() == 3) env.moveLeft = true; else env.moveLeft = false;
-    }
-  }
 }
 
 void loadData() {
@@ -53,18 +43,4 @@ void loadData() {
   spikePositions = json.getJSONObject("spikePositions");
   doorPositions = json.getJSONObject("doorPositions");
   roofPositions = json.getJSONObject("roofPositions");
-}
-
-//  if(keyCode == 39) env.moveRight = true;
-//  if(keyCode == 37) env.moveLeft = true;
-
-void navigate(int handState) {
-  switch(handState) {
-  case KinectPV2.HandState_Open:
-  env.moveRight = false;
-    break;
-  case KinectPV2.HandState_Closed:
-  env.moveRight = false;
-    break;
-  }
 }
