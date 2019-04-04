@@ -18,7 +18,12 @@ JSONObject roofPositions;
 JSONObject spikePositions;
 JSONObject doorPositions;
 
-void setup () {
+import KinectPV2.*;
+kinect = new Kinect();
+KinectPV2 kinect;
+
+void setup ()' {
+  kinect.init();
   noStroke();
   size(1400, 900);
   smooth(4);
@@ -27,10 +32,19 @@ void setup () {
 }
 
 void draw() {
-  float relBackPosX = floors[0].x/(100 * blockSize) * assets.background.width;
-  float relBackPosY = -(assets.background.height - height)/2;
-  image(assets.background, relBackPosX, relBackPosY, assets.background.width, assets.background.height);
+  ArrayList<KSkeleton> skeletonArray =  kinect.getSkeletonColorMap();
   game.show();
+  
+  for (int i = 0; i < skeletonArray.size(); i++) {
+    KSkeleton skeleton = (KSkeleton) skeletonArray.get(i);
+    if (skeleton.isTracked()) {
+      KJoint[] joints = skeleton.getJoints();
+      if(joints[KinectPV2.JointType_HandRight].getState() == 3) {
+        env.moveRight = true;
+      } else env.moveRight = false;
+      if(joints[KinectPV2.JointType_HandLeft].getState() == 3) env.moveLeft = true; else env.moveLeft = false;
+    }
+  }
 }
 
 void loadData() {
@@ -39,4 +53,18 @@ void loadData() {
   spikePositions = json.getJSONObject("spikePositions");
   doorPositions = json.getJSONObject("doorPositions");
   roofPositions = json.getJSONObject("roofPositions");
+}
+
+//  if(keyCode == 39) env.moveRight = true;
+//  if(keyCode == 37) env.moveLeft = true;
+
+void navigate(int handState) {
+  switch(handState) {
+  case KinectPV2.HandState_Open:
+  env.moveRight = false;
+    break;
+  case KinectPV2.HandState_Closed:
+  env.moveRight = false;
+    break;
+  }
 }
