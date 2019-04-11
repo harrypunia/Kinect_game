@@ -16,7 +16,7 @@ class Floor {
        fill(0);
        noStroke();
        image(assets.ground, this.x, this.y, this.size + 1, this.size + 1);
-       ug.show(this.x);
+       ug.show(x);
      }
    }
    

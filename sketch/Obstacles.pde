@@ -1,6 +1,6 @@
 class Obstacles {
   
-  int [] spikePositions = {9};
+  int [] spikePositions = {20};
   int [] doorPositions = {8};
   Spike [] spikes = new Spike[spikePositions.length];
   Door [] doors = new Door[doorPositions.length];
@@ -16,10 +16,10 @@ class Obstacles {
   
   void show() {
      for(int i = 0; i < spikes.length; i++) {
-       spikes[i].show();
+        spikes[i].show();
      }
      for(int i = 0; i < doors.length; i++) {
-       doors[i].show(); 
+        doors[i].show(); 
      }
   }
   

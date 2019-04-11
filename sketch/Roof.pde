@@ -1,6 +1,7 @@
 class Roof {
   
    float x, y, initX, size;
+   boolean inScreen;
    UpperGround up;
    
    Roof(float inX, float inY, float inBlockSize) {
@@ -10,7 +11,8 @@ class Roof {
    
    void show() {
      updatePan();
-     if(this.x > -size || this.x < width + size){
+     inScreen = x > -size && x < width + size && this.y > 0;
+     if(inScreen){
        fill(0);
        rect(this.x, this.y, this.size + 1, this.size + 1);
        up.show(this.x);
