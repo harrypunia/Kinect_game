@@ -9,11 +9,9 @@ class Spike {
   }
   
   void show() {
-    println(floors[i].x > 0 && floors[i].x < size);
-    if (floors[i].x > 0 && floors[i].x < size) {
+    if (floors[i].x > 0 && floors[i].x < width + size) {
      fill(255, 10, 10);
      rect(floors[i].x + size/2, floors[i].y - size, size, size);
     }
   }
-  
 }

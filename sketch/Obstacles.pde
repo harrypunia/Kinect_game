@@ -1,11 +1,11 @@
 class Obstacles {
   
   int [] spikePositions = {20};
-  int [] doorPositions = {8};
+  int [] doorPositions = {8, 22};
   Spike [] spikes = new Spike[spikePositions.length];
   Door [] doors = new Door[doorPositions.length];
   
-  Obstacles(float blockSize, Floor [] floors, Roof [] roofs) {
+  Obstacles(Floor [] floors, Roof [] roofs) {
     for(int i = 0; i < spikes.length; i++){
       spikes[i] = new Spike(floors, spikePositions[i], spikeSize);
     }
@@ -22,5 +22,4 @@ class Obstacles {
         doors[i].show(); 
      }
   }
-  
 }

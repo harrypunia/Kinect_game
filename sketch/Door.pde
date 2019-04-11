@@ -17,9 +17,11 @@ class Door {
  
  void show() {
    update();
-   fill(10, 10, 255);
-   rect(topX, topY, wide, tall); //TOP
-   rect(botX, botY, wide, -tall); //BOT
+   if(floors[i].x > 0 && floors[i].x < width + wide) {
+     fill(10, 10, 255);
+     rect(topX, topY, wide, tall); //TOP
+     rect(botX, botY, wide, -tall); //BOT
+   }
  }
  
  void update() {

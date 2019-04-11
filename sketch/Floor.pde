@@ -11,7 +11,6 @@ class Floor {
    
    void show() {
      inScreen = x > -size && x < width + size && this.y < height;
-     updatePan();
      if(inScreen) { 
        fill(0);
        noStroke();

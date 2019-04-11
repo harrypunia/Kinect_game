@@ -10,7 +10,6 @@ class Roof {
    }
    
    void show() {
-     updatePan();
      inScreen = x > -size && x < width + size && this.y > 0;
      if(inScreen){
        fill(0);

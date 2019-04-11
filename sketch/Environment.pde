@@ -13,19 +13,17 @@ class Environment {
       roofs[i] = new Roof(i * size, roofPositions.getInt(str(i)), size);
       floors[i] = new Floor(i * size, groundPositions.getInt(str(i)), size);
    }
-   ob = new Obstacles(blockSize, floors, roofs);
+   ob = new Obstacles(floors, roofs);
  }
  
  void show() {
+    for(int i =0; i < floors.length; i++) {floors[i].updatePan(); roofs[i].updatePan();}
     ob.show();
     for(int i = 0; i < floors.length; i++) {
       roofs[i].show();
       floors[i].show();
     }
-    if(!player.die) {
-      pan();
-      checkCorners();
-    }
+    if(!player.die) {pan(); checkCorners();}
  }
  
  void checkCorners() {
