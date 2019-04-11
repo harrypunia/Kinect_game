@@ -25,9 +25,9 @@ class Game {
     float relBackPosY = -(assets.background.height - height)/2;
     image(assets.background, relBackPosX, relBackPosY, assets.background.width, assets.background.height);
 
-    //float relCloudPosX = floors[0].x/(100 * blockSize) * assets.clouds.width;
-    //float relCloudPosY = -(assets.clouds.height - height)/2;
-    //image(assets.clouds, relCloudPosX, relCloudPosY, assets.clouds.width, assets.clouds.height);
+    float relCloudPosX = floors[0].x/(100 * blockSize) * assets.clouds.width * 1.2;
+    float relCloudPosY = -(assets.clouds.height - height)/2;
+    image(assets.clouds, relCloudPosX, relCloudPosY, assets.clouds.width, assets.clouds.height);
   }
 }
 

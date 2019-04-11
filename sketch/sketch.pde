@@ -1,3 +1,6 @@
+import processing.sound.*;
+Sound jump;
+
 Game game;
 int blockSize = 50; //size of each box
 int playerStart = 5; //starting index of player
