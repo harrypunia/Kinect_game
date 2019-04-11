@@ -44,6 +44,8 @@ void setup () {
 
 void draw() {
   game.show();
+  println(floors[25].inScreen);
+   
 }
 
 void loadData() {

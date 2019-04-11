@@ -4,8 +4,7 @@ Obstacles ob;
 
 class Environment {
   
- float localSize, groundSmoothness = .6, roofSmoothness = .6;
- int groundIndex = 0, roofIndex = 0;
+ float localSize;
  boolean moveLeft, moveRight;
  
  Environment(float size) {

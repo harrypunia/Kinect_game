@@ -1,6 +1,6 @@
 class Door {
   
-  float topX, botX, topY, botY, floorX, floorY, speed, wide, tall, moveGate = 0;
+  float topX, botX, topY, botY, speed, wide, tall, moveGate = 0;
   int i;
   boolean close = false;
   Floor [] floors;
@@ -33,24 +33,28 @@ class Door {
  
  void animate(int i) {
    if(this.close) moveGate += this.speed; else moveGate -= this.speed;
-   if(topY > roofs[i].y + blockSize) this.close = false; else if (topY < roofs[i].y - tall + blockSize) this.close =  true;
+   if(topY > roofs[i].y + blockSize - 5) this.close = false; else if (topY < roofs[i].y - tall + blockSize) this.close =  true;
  }
  
  void collision() {
    boolean touchingDoor = player.pos.y - playerSize/2 < topY + tall || player.pos.y + playerSize/2 > botY - tall;
-   boolean touchingTopLeft = player.pos.x + playerSize / 2 > topX && player.pos.x + playerSize / 2 < topX + wide/2;
-   boolean touchingBotLeft = player.pos.x + playerSize / 2 > botX && player.pos.x + playerSize / 2 < botX + wide/2;
-   boolean touchingTopRight = player.pos.x - playerSize / 2 < topX + wide && player.pos.x - playerSize / 2 > topX + wide/2;
-   boolean touchingBotRight = player.pos.x - playerSize / 2 < botX + wide && player.pos.x - playerSize / 2 > botX + wide/2;
+   boolean touchingTip = player.pos.y - playerSize/2 < topY + tall && player.pos.y + playerSize/2 > topY + tall || player.pos.y + playerSize/2 > botY && player.pos.y - playerSize/2 < botY;
+   boolean touchingLeft = player.pos.x + playerSize / 2 > botX && player.pos.x + playerSize / 2 < botX + wide/2;
+   boolean touchingRight = player.pos.x - playerSize / 2 < botX + wide && player.pos.x - playerSize / 2 > botX + wide/2;
    
    if(touchingDoor) {
-     if(touchingTopLeft && touchingBotLeft) {
-       playerSpeed *= -1;
+     if(touchingLeft) {
        for(int j = 0; j < floors.length; j++) {
-        floors[j].x = floors[j].initX - ((i-1-playerStart)*blockSize) - (blockSize-wide)/2; 
-       }
-     } else if (touchingTopRight || touchingBotRight) {
-      playerSpeed *= -1; 
+          floors[j].x = floors[j].initX - ((i-playerStart-1)*blockSize)-(blockSize-wide)/2;
+          roofs[j].x = floors[j].initX - ((i-playerStart-1)*blockSize)-(blockSize-wide)/2; 
+        }
+        playerSpeed *= -1;
+     } else if (touchingRight) {
+        for(int j = 0; j < floors.length; j++) {
+           floors[j].x = floors[j].initX - ((i-playerStart)*blockSize)+(blockSize-wide)/2-playerSize;
+           roofs[j].x = floors[j].initX - ((i-playerStart)*blockSize)+(blockSize-wide)/2-playerSize; 
+        }
+        playerSpeed *= -1;
      }
    }
  }
