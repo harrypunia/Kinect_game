@@ -8,6 +8,5 @@ class Assets {
     underGround = loadImage("data/underGround.jpg");
     background = loadImage("data/background.jpg");
     clouds = loadImage("data/clouds.png");
-    jump = new Sound("data/jump.mp3");
   }
 }

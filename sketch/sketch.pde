@@ -1,5 +1,4 @@
 import processing.sound.*;
-Sound jump;
 
 Game game;
 int blockSize = 50; //size of each box
