@@ -17,7 +17,7 @@ class Game {
     player.show();
     env.show();
     physics.init();
-    detectPose();
+    if(!useKeys) detectPose();
   }
 
   void drawBackground() {
@@ -45,5 +45,22 @@ void detectPose() {
         if(joints[KinectPV2.JointType_HandLeft].getState() == 3) env.moveLeft = true; else env.moveLeft = false;
       }
     }
+  }
+}
+
+void keyPressed() {
+  if(useKeys) {
+  //39 = rightArrow, 37 = leftArrow; 38 == upArrow;
+    if(keyCode == 39) env.moveRight = true;
+    if(keyCode == 37) env.moveLeft = true;
+    if(keyCode == 38) player.startJump = true;
+  }
+}
+
+void keyReleased() {
+  if(useKeys) {
+    if(keyCode == 39) env.moveRight = false;
+    if(keyCode == 37) env.moveLeft = false;
+    if(keyCode == 38) player.startJump = false;
   }
 }

@@ -18,6 +18,8 @@ JSONObject roofPositions;
 JSONObject spikePositions;
 JSONObject doorPositions;
 
+boolean useKeys = true;
+
 import KinectPV2.*;
 KinectPV2 kinect;
 
