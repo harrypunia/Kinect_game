@@ -41,8 +41,16 @@ void detectPose() {
         player.startJump = true;
       } else {
         player.startJump = false;
-        if(joints[KinectPV2.JointType_HandRight].getState() == 3) env.moveRight = true; else env.moveRight = false;
-        if(joints[KinectPV2.JointType_HandLeft].getState() == 3) env.moveLeft = true; else env.moveLeft = false;
+        if(joints[KinectPV2.JointType_HandRight].getState() == 3) {
+          env.moveRight = true;
+          player.updateImage(assets.playerRightMove);
+          lastDirMove = "right";
+        } else env.moveRight = false;
+        if(joints[KinectPV2.JointType_HandLeft].getState() == 3) {
+          env.moveLeft = true;
+          player.updateImage(assets.playerLeftMove);
+          lastDirMove = "left";
+        } else env.moveLeft = false;
       }
     }
   }

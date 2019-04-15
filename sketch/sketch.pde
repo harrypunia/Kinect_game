@@ -20,7 +20,8 @@ JSONObject roofPositions;
 JSONObject spikePositions;
 JSONObject doorPositions;
 //----Controls-----
-boolean useKeys = true;
+boolean useKeys = false;
+String lastDirMove = "right";
 //-----SoundFiles-----
 SoundFile SBack;
 

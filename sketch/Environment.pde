@@ -50,12 +50,16 @@ class Environment {
  
  void pan () {
      if(moveRight) {
+      player.updateImage(assets.playerRightMove);
+      lastDirMove = "right";
       if(playerSpeed < playerMaxSpeed) {
          playerSpeed += playerAcceleration;
        } else {
          playerSpeed = playerMaxSpeed;
        }
      } else if (moveLeft) {
+        player.updateImage(assets.playerLeftMove);
+        lastDirMove = "left";
         if(playerSpeed > -playerMaxSpeed) {
            playerSpeed -= playerAcceleration;
          } else {
@@ -63,6 +67,7 @@ class Environment {
        }
      } else {
        playerSpeed = 0; //Work on deceleration
+       if(lastDirMove == "left") player.updateImage(assets.playerLeft); else player.updateImage(assets.playerRight);
      }
   }
    

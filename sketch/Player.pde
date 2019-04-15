@@ -3,6 +3,7 @@ class Player {
    PVector pos, vel, acc, gravity; 
    float size, jumpSpeed;
    boolean startJump, jumping = false, die = false;
+   PImage activeImage = assets.playerRight;
    
    Player(float x, float y, float inPlayerSize) {
      pos = new PVector(x, y);
@@ -16,10 +17,9 @@ class Player {
     death();
     update();
     jump();
-    rectMode(CENTER);
-    fill(200, 10, 200);
-    rect(pos.x, pos.y, size, size);
-    rectMode(CORNER); //reset
+    imageMode(CENTER);
+    image(activeImage, pos.x, pos.y, size, size);
+    imageMode(CORNER);
    }
    
    void update() {
@@ -27,6 +27,8 @@ class Player {
      pos.add(vel);
      acc.mult(0);
    }
+   
+   void updateImage (PImage which) {activeImage = which;}
    
    void applyForce(PVector force) {acc.add(force);}
    
@@ -36,7 +38,10 @@ class Player {
          applyForce(new PVector(0, -playerJumpSpeed)); 
          jumping = true;
        }
-     } else vel.add(gravity);
+     } else {
+       if(lastDirMove == "left") updateImage(assets.playerLeftJump); else updateImage(assets.playerRightJump);
+       vel.add(gravity);
+     }
    }
    
    void fall() {jumping = true;}
