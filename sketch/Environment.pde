@@ -16,6 +16,13 @@ class Environment {
    ob = new Obstacles(floors, roofs);
  }
  
+ void setPosition(int num, float offset) {
+   for(int i = 0; i < floors.length; i++) {
+      floors[i].x = floors[i].initX - ((num-playerStart-1)*blockSize) + offset;
+      roofs[i].x = floors[i].initX - ((num-playerStart-1)*blockSize) + offset;  
+   }
+ }
+ 
  void show() {
     for(int i =0; i < floors.length; i++) {floors[i].updatePan(); roofs[i].updatePan();}
     ob.show();

@@ -43,19 +43,15 @@ class Door {
    boolean touchingTip = player.pos.y - playerSize/2 < topY + tall && player.pos.y + playerSize/2 > topY + tall || player.pos.y + playerSize/2 > botY && player.pos.y - playerSize/2 < botY;
    boolean touchingLeft = player.pos.x + playerSize / 2 > botX && player.pos.x + playerSize / 2 < botX + wide/2;
    boolean touchingRight = player.pos.x - playerSize / 2 < botX + wide && player.pos.x - playerSize / 2 > botX + wide/2;
+   float offsetLeft = (blockSize-wide)/2;
+   float offsetRight = (blockSize-wide)/2-playerSize;
    
    if(touchingDoor) {
      if(touchingLeft) {
-       for(int j = 0; j < floors.length; j++) {
-          floors[j].x = floors[j].initX - ((i-playerStart-1)*blockSize)-(blockSize-wide)/2;
-          roofs[j].x = floors[j].initX - ((i-playerStart-1)*blockSize)-(blockSize-wide)/2; 
-        }
+        env.setPosition(i, -offsetLeft);
         playerSpeed *= -1;
      } else if (touchingRight) {
-        for(int j = 0; j < floors.length; j++) {
-           floors[j].x = floors[j].initX - ((i-playerStart)*blockSize)+(blockSize-wide)/2-playerSize;
-           roofs[j].x = floors[j].initX - ((i-playerStart)*blockSize)+(blockSize-wide)/2-playerSize; 
-        }
+        env.setPosition(i, offsetRight);
         playerSpeed *= -1;
      }
    }
