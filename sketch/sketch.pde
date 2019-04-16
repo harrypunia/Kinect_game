@@ -45,6 +45,7 @@ void setup () {
   smooth(4);
   loadData();
   game = new Game(blockSize, playerStart, playerSize);
+  SBack.amp(0.5);
   SBack.play();
 }
 
