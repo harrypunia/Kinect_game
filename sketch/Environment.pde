@@ -18,8 +18,8 @@ class Environment {
  
  void setPosition(int num, float offset) {
    for(int i = 0; i < floors.length; i++) {
-      floors[i].x = floors[i].initX - ((num-playerStart-1)*blockSize) + offset;
-      roofs[i].x = floors[i].initX - ((num-playerStart-1)*blockSize) + offset;  
+      floors[i].x = floors[i].initX - ((num-playerStart)*blockSize) - offset;
+      roofs[i].x = floors[i].initX - ((num-playerStart)*blockSize) - offset;  
    }
  }
  

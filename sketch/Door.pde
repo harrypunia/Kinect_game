@@ -18,8 +18,7 @@ class Door {
  void show() {
    update();
    if(floors[i].x > 0 && floors[i].x < width + wide) {
-     fill(10, 10, 255);
-     rect(topX, topY, wide, tall); //TOP
+     image(assets.door, topX, topY, wide, tall); //TOP
      rect(botX, botY, wide, -tall); //BOT
    }
  }
@@ -27,8 +26,8 @@ class Door {
  void update() {
    topY = roofs[i].y + blockSize + moveGate;
    botY = floors[i].y - moveGate;
-   topX = roofs[i].x + wide/2;
-   botX = floors[i].x + wide/2;
+   topX = roofs[i].x + blockSize/2 - wide/2;
+   botX = floors[i].x + blockSize/2 - wide/2;
    animate(i);
    collision();
  }
@@ -40,20 +39,21 @@ class Door {
  
  void collision() {
    boolean touchingDoor = player.pos.y - playerSize/2 < topY + tall || player.pos.y + playerSize/2 > botY - tall;
-   boolean touchingTip = player.pos.y - playerSize/2 < topY + tall && player.pos.y + playerSize/2 > topY + tall || player.pos.y + playerSize/2 > botY && player.pos.y - playerSize/2 < botY;
+   boolean touchingTop = (player.pos.y - playerSize/2 < topY + tall && player.pos.y + playerSize/2 > topY + tall) || (player.pos.y + playerSize/2 > botY - tall && player.pos.y - playerSize/2 < botY - tall);
    boolean touchingLeft = player.pos.x + playerSize / 2 > botX && player.pos.x + playerSize / 2 < botX + wide/2;
    boolean touchingRight = player.pos.x - playerSize / 2 < botX + wide && player.pos.x - playerSize / 2 > botX + wide/2;
-   float offsetLeft = (blockSize-wide)/2;
-   float offsetRight = (blockSize-wide)/2-playerSize;
+   float offsetLeft = -playerSize/2 - wide/2;
+   float offsetRight = playerSize/2 + wide/2;
    
    if(touchingDoor) {
      if(touchingLeft) {
-        env.setPosition(i, -offsetLeft);
+        env.setPosition(i, offsetLeft);
         playerSpeed *= -1;
      } else if (touchingRight) {
         env.setPosition(i, offsetRight);
         playerSpeed *= -1;
      }
+     if(touchingLeft || touchingRight) {if(touchingTop) player.die = true;}
    }
  }
  

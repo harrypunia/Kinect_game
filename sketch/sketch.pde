@@ -11,7 +11,7 @@ float playerJumpSpeed = 12;
 float gravity = 0.09;
 //------OBSTALCES-------
 float spikeSize = 20;
-float doorSpeed = 2;
+float doorSpeed;
 float doorWidth = 20;
 //-----JSON--------
 JSONObject json;
@@ -20,7 +20,7 @@ JSONObject roofPositions;
 JSONObject spikePositions;
 JSONObject doorPositions;
 //----Controls-----
-boolean useKeys = false;
+boolean useKeys = true;
 String lastDirMove = "right";
 //-----SoundFiles-----
 SoundFile SBack;
@@ -31,10 +31,12 @@ KinectPV2 kinect;
 
 void setup () {
   loadSound();
-  kinect = new KinectPV2(this);
-  kinect.enableSkeletonColorMap(true);
-  kinect.enableColorImg(true);
-  kinect.init();
+  if(!useKeys) {
+    kinect = new KinectPV2(this);
+    kinect.enableSkeletonColorMap(true);
+    kinect.enableColorImg(true);
+    kinect.init();
+  }
   noStroke();
   size(1920, 1200);
   smooth(4);

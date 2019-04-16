@@ -2,7 +2,7 @@ class Player {
   
    PVector pos, vel, acc, gravity; 
    float size, jumpSpeed;
-   boolean startJump, jumping = false, die = false;
+   boolean startJump, jumping = false, die = false, once = true;
    PImage activeImage = assets.playerRight;
    
    Player(float x, float y, float inPlayerSize) {
@@ -49,6 +49,7 @@ class Player {
    void death() {
      if(this.die) {
        playerSpeed = 0;
+       if(once) {player.vel.y = -5; once = false;};
        startJump = true;
      }
    }

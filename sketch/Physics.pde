@@ -38,13 +38,11 @@ class Physics {
      } else {if(floors[rightBlock].x < player.pos.x - playerSize/2) activeBlock = rightBlock;}
    }
    
-   void wallCollision() {
-     playerSpeed *= -1;
-   }
+   void wallCollision() { playerSpeed *= -1; }
    
    boolean blockIsHigher(int index) {if(floors[index].y < floors[activeBlock].y) return true; else return false;}
    
-   boolean playerIsHigher(int index) {if(player.pos.y < floors[index].y) return true; else return false;}
+   boolean playerIsHigher(int index) {if(player.pos.y + playerSize/2 < floors[index].y) return true; else return false;}
    
    void groundCollision() {
       if(player.pos.y > floors[activeBlock].y - playerSize/2) {
