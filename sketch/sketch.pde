@@ -24,6 +24,9 @@ boolean useKeys = true;
 String lastDirMove = "right";
 //-----SoundFiles-----
 SoundFile SBack;
+SoundFile SDeath;
+SoundFile SDeathMusic;
+SoundFile SJump;
 
 import KinectPV2.*;
 KinectPV2 kinect;
@@ -59,4 +62,7 @@ void loadData() {
 
 void loadSound() {
   SBack = new SoundFile(this, "background.mp3");
+  SJump = new SoundFile(this, "jump.mp3");
+  SDeath = new SoundFile(this, "death.mp3");
+  SDeathMusic = new SoundFile(this, "deathMusic.mp3");
 }

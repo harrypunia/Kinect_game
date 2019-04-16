@@ -35,6 +35,7 @@ class Player {
    void jump() {
      if(!jumping) {
        if(this.startJump) {
+          SJump.play();
          applyForce(new PVector(0, -playerJumpSpeed)); 
          jumping = true;
        }
@@ -49,7 +50,13 @@ class Player {
    void death() {
      if(this.die) {
        playerSpeed = 0;
-       if(once) {player.vel.y = -5; once = false;};
+       if(once) {
+         player.vel.y = -5;
+         once = false;
+         SBack.pause();
+         SDeath.play();
+         SDeathMusic.play();
+       };
        startJump = true;
      }
    }
