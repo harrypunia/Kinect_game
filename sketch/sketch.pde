@@ -21,7 +21,7 @@ JSONObject spikePositions;
 JSONObject doorPositions;
 //----Controls-----
 boolean useKeys = true;
-boolean godMode = true;
+boolean godMode = false;
 String lastDirMove = "right";
 //-----SoundFiles-----
 SoundFile SBack;

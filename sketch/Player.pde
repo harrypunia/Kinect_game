@@ -1,7 +1,7 @@
 class Player {
   
    PVector pos, vel, acc, gravity; 
-   float size, jumpSpeed;
+   float size, jumpSpeed, resetCounter = 0;
    boolean startJump, jumping = false, die = false, once = true;
    PImage activeImage = assets.playerRight;
    
@@ -57,6 +57,12 @@ class Player {
            SBack.pause();
            SDeath.play();
            SDeathMusic.play();
+           resetCounter++;
+           if(resetCounter > 200) {
+             env.setPosition(playerStart, 0);
+             player.die = false;
+             resetCounter = 0;
+           }
          };
          startJump = true;
        }
