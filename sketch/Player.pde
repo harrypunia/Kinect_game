@@ -49,7 +49,7 @@ class Player {
    
    void death() {
      if(!godMode) {
-       if(this.die) {
+       if(die) {
          playerSpeed = 0;
          if(once) {
            player.vel.y = -5;
@@ -61,12 +61,11 @@ class Player {
          startJump = true;
          if(resetCounter > 100) {
            env.setPosition(playerStart, 0);
-           die = false;
-           resetCounter = 0;
-           player.pos.y = height/2;
+           pos.y = floors[playerStart].y - playerSize/2 - 50;
            startJump = false;
-           SBack.play();
            feed.add("Try Again");
+           resetCounter = 0;
+           die = false;
          }
         resetCounter++;
        }

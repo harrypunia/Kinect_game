@@ -53,7 +53,7 @@ class Door {
         env.setPosition(i, offsetRight);
         playerSpeed *= -1;
      }
-     if(touchingLeft || touchingRight) {if(touchingTop) player.die = true;}
+     if(touchingLeft || touchingRight) {if(touchingTop && !player.die) player.die = true;}
    }
  }
  
