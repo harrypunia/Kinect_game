@@ -29,6 +29,9 @@ class Environment {
     for(int i = 0; i < floors.length; i++) {
       roofs[i].show();
       floors[i].show();
+      fill(0);
+      noStroke();
+      text(str(i), floors[i].x, floors[i].y);
     }
     if(!player.die || godMode) {pan(); checkCorners();}
  }

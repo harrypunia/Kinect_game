@@ -59,6 +59,8 @@ void detectPose() {
   }
 }
 
+void mousePressed() {feed.add("Close your fists to move");}
+
 void keyPressed() {
   if(useKeys) {
   //39 = rightArrow, 37 = leftArrow; 38 == upArrow;
