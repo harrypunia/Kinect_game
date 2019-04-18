@@ -3,6 +3,7 @@ Player player;
 Environment env;
 Assets assets;
 Feed feed;
+boolean instruction1 = true, instruction2 = true;
 
 class Game {
 
@@ -12,6 +13,7 @@ class Game {
     physics = new Physics(playerStart, inBlockSize, inPlayerSize);
     player = new Player((playerStart * inBlockSize) + inBlockSize/2, floors[playerStart].y - inPlayerSize/2, inPlayerSize);
     feed = new Feed(width/2, height/10);
+    feed.add("Close either of your fists, to move");
   }
 
   void show() {
@@ -21,6 +23,7 @@ class Game {
     physics.init();
     if(!useKeys) detectPose();
     feed.display();
+    instructions();
   }
 
   void drawBackground() {
@@ -32,6 +35,18 @@ class Game {
     float relCloudPosY = -(assets.clouds.height - height)/2;
     image(assets.clouds, relCloudPosX, relCloudPosY, assets.clouds.width, assets.clouds.height);
   }
+  
+  void instructions() {
+    if(instruction1 && physics.activeBlock == 7) {
+      feed.add("Close both of your fists to jump");
+      instruction1 = false;
+    }
+    if(instruction2 && physics.activeBlock == 12) {
+      feed.add("Good Luck!");
+      instruction2 = false;
+    }
+ }
+  
 }
 
 void detectPose() {
@@ -56,10 +71,8 @@ void detectPose() {
         } else env.moveLeft = false;
       }
     }
-  }
+  } 
 }
-
-void mousePressed() {feed.add("Close your fists to move");}
 
 void keyPressed() {
   if(useKeys) {
