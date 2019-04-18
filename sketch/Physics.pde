@@ -10,7 +10,7 @@ class Physics {
    }
    
    void init() {
-     if(!player.die) {
+     if(!player.die || godMode) {
        updateBlocks();
        setActiveBlock();
        groundCollision();

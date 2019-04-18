@@ -48,16 +48,18 @@ class Player {
    void fall() {jumping = true;}
    
    void death() {
-     if(this.die) {
-       playerSpeed = 0;
-       if(once) {
-         player.vel.y = -5;
-         once = false;
-         SBack.pause();
-         SDeath.play();
-         SDeathMusic.play();
-       };
-       startJump = true;
+     if(!godMode) {
+       if(this.die) {
+         playerSpeed = 0;
+         if(once) {
+           player.vel.y = -5;
+           once = false;
+           SBack.pause();
+           SDeath.play();
+           SDeathMusic.play();
+         };
+         startJump = true;
+       }
      }
    }
    

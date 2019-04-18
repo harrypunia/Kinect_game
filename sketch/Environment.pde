@@ -30,7 +30,7 @@ class Environment {
       roofs[i].show();
       floors[i].show();
     }
-    if(!player.die) {pan(); checkCorners();}
+    if(!player.die || godMode) {pan(); checkCorners();}
  }
  
  void checkCorners() {
