@@ -48,6 +48,7 @@ void setup () {
   game = new Game(blockSize, playerStart, playerSize);
   SBack.amp(0.5);
   SBack.play();
+  SBack.loop();
 }
 
 void draw() {

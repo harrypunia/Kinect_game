@@ -27,7 +27,6 @@ class Feed {
  
  void add (String inT) {
    t = inT;
-   
  }
  
 }
