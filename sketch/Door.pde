@@ -19,7 +19,7 @@ class Door {
    update();
    if(floors[i].x > 0 && floors[i].x < width + wide) {
      image(assets.door, topX, topY, wide, tall); //TOP
-     rect(botX, botY, wide, -tall); //BOT
+     image(assets.doorUpside, botX, botY, wide, -tall); //BOT
    }
  }
  
@@ -53,7 +53,7 @@ class Door {
         env.setPosition(i, offsetRight);
         playerSpeed *= -1;
      }
-     if(touchingLeft || touchingRight) {if(touchingTop) player.die = true;}
+     if(touchingLeft || touchingRight) {if(touchingTop && !player.die) player.die = true;}
    }
  }
  

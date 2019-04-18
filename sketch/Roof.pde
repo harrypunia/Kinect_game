@@ -12,7 +12,7 @@ class Roof {
    void show() {
      inScreen = x > -size && x < width + size && this.y > 0;
      if(inScreen){
-       image(assets.ground, x, y, size, size);
+       image(assets.roof, x, y, size, size);
        //rect(this.x, this.y, this.size + 1, this.size + 1);
        up.show(this.x);
      }

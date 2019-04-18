@@ -1,7 +1,7 @@
 class Player {
   
    PVector pos, vel, acc, gravity; 
-   float size, jumpSpeed;
+   float size, jumpSpeed, resetCounter = 0;
    boolean startJump, jumping = false, die = false, once = true;
    PImage activeImage = assets.playerRight;
    
@@ -48,16 +48,27 @@ class Player {
    void fall() {jumping = true;}
    
    void death() {
-     if(this.die) {
-       playerSpeed = 0;
-       if(once) {
-         player.vel.y = -5;
-         once = false;
-         SBack.pause();
-         SDeath.play();
-         SDeathMusic.play();
-       };
-       startJump = true;
+     if(!godMode) {
+       if(die) {
+         playerSpeed = 0;
+         if(once) {
+           player.vel.y = -5;
+           once = false;
+           SBack.pause();
+           SDeath.play();
+           SDeathMusic.play();
+         };
+         startJump = true;
+         if(resetCounter > 100) {
+           env.setPosition(playerStart, 0);
+           pos.y = floors[playerStart].y - playerSize/2 - 50;
+           startJump = false;
+           feed.add("Try Again");
+           resetCounter = 0;
+           die = false;
+         }
+        resetCounter++;
+       }
      }
    }
    

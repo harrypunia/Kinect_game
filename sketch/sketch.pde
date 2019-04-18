@@ -1,5 +1,5 @@
 import processing.sound.*;
-
+//FEEL FREE TO CHANGE SOME OF THESE PARAMETERS
 Game game;
 int blockSize = 100; //size of each box
 int playerStart = 5; //starting index of player
@@ -19,8 +19,9 @@ JSONObject groundPositions;
 JSONObject roofPositions;
 JSONObject spikePositions;
 JSONObject doorPositions;
-//----Controls-----
+//----Controls-----CHANGE THESE BOOLEANS TO SWITCH BETWEEN KINECT AND KEYS
 boolean useKeys = true;
+boolean godMode = false;
 String lastDirMove = "right";
 //-----SoundFiles-----
 SoundFile SBack;
@@ -47,6 +48,7 @@ void setup () {
   game = new Game(blockSize, playerStart, playerSize);
   SBack.amp(0.5);
   SBack.play();
+  SBack.loop();
 }
 
 void draw() {

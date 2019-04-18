@@ -10,7 +10,7 @@ class Physics {
    }
    
    void init() {
-     if(!player.die) {
+     if(!player.die || godMode) {
        updateBlocks();
        setActiveBlock();
        groundCollision();
@@ -46,7 +46,7 @@ class Physics {
    
    void groundCollision() {
       if(player.pos.y > floors[activeBlock].y - playerSize/2) {
-        if(floors[activeBlock].y == height) player.die = true; else {
+        if(floors[activeBlock].y == height && !player.die) player.die = true; else {
            player.pos.y = floors[activeBlock].y - playerSize/2;
            player.vel.y = 0;
            player.jumping = false;

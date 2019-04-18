@@ -19,7 +19,7 @@ class Spike {
   
   void detect() {
     float gap = dist(x + size/2, y, player.pos.x, player.pos.y);
-    if(gap < (playerSize + size)/2) {
+    if(gap < (playerSize + size)/2 && !player.die) {
        player.die = true; 
     }
   }

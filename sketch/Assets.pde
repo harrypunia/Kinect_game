@@ -1,6 +1,8 @@
 class Assets {
   PImage ground;
   PImage underGround;
+  PImage impurity;
+  PImage roof;
   PImage background;
   PImage clouds;
   PImage playerRight;
@@ -11,10 +13,13 @@ class Assets {
   PImage playerLeftJump;
   PImage spike;
   PImage door;
+  PImage doorUpside;
   Assets() {
     ground = loadImage("data/ground.jpg");
+    roof = loadImage("data/roof.jpg");
     underGround = loadImage("data/underGround.jpg");
     background = loadImage("data/background.jpg");
+    impurity = loadImage("data/impurity.jpg");
     clouds = loadImage("data/clouds.png");
     playerRight = loadImage("data/player_right.png");
     playerLeft = loadImage("data/player_left.png");
@@ -24,5 +29,6 @@ class Assets {
     playerLeftJump = loadImage("data/player_left_jump.png");
     spike = loadImage("data/spike.png");
     door = loadImage("data/door.png");
+    doorUpside = loadImage("data/door_upside.png");
   }
 }
