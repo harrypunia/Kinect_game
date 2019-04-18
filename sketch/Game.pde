@@ -2,6 +2,7 @@ Physics physics;
 Player player;
 Environment env;
 Assets assets;
+Feed feed;
 
 class Game {
 
@@ -10,6 +11,7 @@ class Game {
     env = new Environment(inBlockSize);
     physics = new Physics(playerStart, inBlockSize, inPlayerSize);
     player = new Player((playerStart * inBlockSize) + inBlockSize/2, floors[playerStart].y - inPlayerSize/2, inPlayerSize);
+    feed = new Feed(width/2, height/10);
   }
 
   void show() {
@@ -18,6 +20,7 @@ class Game {
     env.show();
     physics.init();
     if(!useKeys) detectPose();
+    feed.display();
   }
 
   void drawBackground() {

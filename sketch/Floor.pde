@@ -13,7 +13,6 @@ class Floor {
      inScreen = x > -size && x < width + size && this.y < height;
      if(inScreen) { 
        noFill();
-       stroke(0);
        image(assets.ground, this.x, this.y, this.size + 1, this.size + 1);
        rect(this.x, this.y, this.size + 1, this.size + 1);
        ug.show(x);
