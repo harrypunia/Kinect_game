@@ -57,14 +57,18 @@ class Player {
            SBack.pause();
            SDeath.play();
            SDeathMusic.play();
-           resetCounter++;
-           if(resetCounter > 200) {
-             env.setPosition(playerStart, 0);
-             player.die = false;
-             resetCounter = 0;
-           }
          };
          startJump = true;
+         if(resetCounter > 100) {
+           env.setPosition(playerStart, 0);
+           die = false;
+           resetCounter = 0;
+           player.pos.y = height/2;
+           startJump = false;
+           SBack.play();
+           feed.add("Try Again");
+         }
+        resetCounter++;
        }
      }
    }
