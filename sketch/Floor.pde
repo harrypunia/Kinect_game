@@ -30,7 +30,8 @@ class UnderGround {
    
    UnderGround(float inX, float inY, float inBlockSize) {
      x = inX; y = inY; size = inBlockSize;
-     arr = new float[int((height - inY) / inBlockSize) + 1];
+     int arrLength = int(int((height - inY) / inBlockSize) + 1);
+     arr = new float[arrLength];
      for(int i = 0; i < arr.length; i++) {
        arr[i] = inY + ((i + 1) * inBlockSize);
      }
@@ -38,8 +39,8 @@ class UnderGround {
    
    void show(float newX) {
     fill(50);
-    for(int i = 0; i < arr.length; i++){ 
-       image(assets.underGround, newX, arr[i], size + 1, size + 1);
+    for(int i = 0; i < arr.length; i++){
+      image(assets.underGround, newX, arr[i], size + 1, size + 1);
      } 
    }
    
